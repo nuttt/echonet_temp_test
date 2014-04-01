@@ -16,8 +16,8 @@ def setup():
   gpio.setup(reset_pin, gpio.OUT)
 
   # resetting Arduino
-  gpio.output(reset_pin, False)
-  gpio.output(reset_pin, True)
+  # gpio.output(reset_pin, False)
+  # gpio.output(reset_pin, True)
 
   # flush old tty input
   ser.flush()
@@ -26,6 +26,7 @@ def setup():
 # main code
 try:
   setup()
+  ser.writelines("request\n")
   while True:
     response = ser.readline().strip()
     try:
